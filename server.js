@@ -31,7 +31,7 @@ function init(){
     ])
     .then(answers => {  
         teamTitle.push(answers.teamName);
-        console.log(teamTitle);
+        console.log(teamTitle[0].length);
     })
 }
 function managerQuestion(){
@@ -178,7 +178,7 @@ fs.writeFile(`./public/${teamTitle}.html`, HTML, err => {
 const createCard = employee => {
     HTML += `
     <!-- Below is mockup of Cards -->
-    <div class="card-columns d-flex flex-wrap justify-content-center">
+    <div class="card-columns d-flex flex-wrap justify-content-center pt-3">
         <div class="card d-flex align-self-center" style="width: 18rem;">
             <div class="card-body">
                 <h3 class="card-title">${employee.name}</h3>

@@ -1,9 +1,8 @@
 const employeeConstructor = require('./employeeConstructor');
 
 class managerConstructor extends employeeConstructor {
-    constructor(teamName, name, id, email, officeNumber){
+    constructor(name, id, email, officeNumber){
         super(name, id, email);
-        this.teamName = teamName;
         this.officeNumber = officeNumber;
     }
     getOfficeId(){
@@ -11,9 +10,6 @@ class managerConstructor extends employeeConstructor {
     }
     getRole(){
         return 'Manager'
-    }
-    getTeamName(){
-        return this.teamName;
     }
 }
 
