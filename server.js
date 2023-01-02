@@ -31,7 +31,6 @@ function init(){
     ])
     .then(answers => {  
         teamTitle.push(answers.teamName);
-        console.log(teamTitle[0].length);
     })
 }
 function managerQuestion(){
@@ -59,8 +58,7 @@ function managerQuestion(){
         }
     ]) 
     .then(answers => {
-        const manager = new managerConstructor(answers.teamName, answers.name, answers.id, answers.email, answers.officeNumber);
-        console.log(manager);
+        const manager = new managerConstructor(answers.name, answers.id, answers.email, answers.officeNumber)
         teamConstruct.push(manager);
 
     })
@@ -114,17 +112,14 @@ function employeeQuestions(){
         let employee = answers;
         if (role == "intern") {
             employee = new internConstructor (answers.name, answers.id, answers.email, answers.school);
-            console.log(employee);
         }
         else if (role == "engineer") {
             employee = new engineerConstructor (answers.name, answers.email, answers.id, answers.github);
-            console.log(employee);
         }
         teamConstruct.push(employee);
         if (confirm) {
             return employeeQuestions(teamConstruct);
         } else {
-            console.log(teamConstruct);
             return teamConstruct;
         }
     })
@@ -178,7 +173,7 @@ fs.writeFile(`./public/${teamTitle}.html`, HTML, err => {
 const createCard = employee => {
     HTML += `
     <!-- Below is mockup of Cards -->
-    <div class="card-columns d-flex flex-wrap justify-content-center pt-3">
+    <div class="card-columns d-flex flex-wrap justify-content-center">
         <div class="card d-flex align-self-center" style="width: 18rem;">
             <div class="card-body">
                 <h3 class="card-title">${employee.name}</h3>
